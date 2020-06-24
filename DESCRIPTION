@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Depends: R (>= 3.3.0), dplyr, maps, readr, tidyr
+Depends: R (>= 3.3.0), dplyr, maps, readr, tidyr, testthat
 Description: visualize accident data for 2013, 2014, and 2015
 License: use_gpl3_license()
 Encoding: UTF-8
