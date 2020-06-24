@@ -1,3 +1,5 @@
+utils::globalVariables(c("year", "MONTH", "n", "STATE"))
+
 #' Read data from a file at given path
 #'
 #' @param filename A string
@@ -6,13 +8,11 @@
 #' @importFrom tibble as_tibble
 #' @note The function will stop if the file does not exist.
 #' @examples
-#' fars_read("accident_2013.csv.bz2")
-#' fars_read("accident_2014.csv.bz2")
-#' fars_read("accident_2015.csv.bz2")
+#' \dontrun{fars_read("accident_2013.csv.bz2")}
 #'
 #' @export
 fars_read <- function(filename) {
-  filename = paste("./inst/extdata/", filename, sep = "")
+  filename = paste(getwd(), "/inst/extdata/", filename, sep = "")
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
   data <- suppressMessages({
@@ -26,9 +26,7 @@ fars_read <- function(filename) {
 #' @param year A number
 #' @return The string coresponding to \code{year}
 #' @examples
-#' make_filename(2018)
-#' make_filename(2019)
-#' make_filename(2020)
+#' \dontrun{make_filename(2018)}
 #'
 #' @export
 make_filename <- function(year) {
@@ -40,11 +38,10 @@ make_filename <- function(year) {
 #'
 #' @param years An list of number
 #' @return The datafrome coresponding to given \code{years}
-#' @importFrom dplyr mutate select
+#' @importFrom dplyr mutate select %>%
 #' @note The year could be invalid if file does not exist.
 #' @examples
-#' fars_read_years(c(2013, 2015))
-#' fars_read_years(c(2015,2018))
+#' \dontrun{fars_read_years(c(2013, 2015))}
 #'
 #' @export
 fars_read_years <- function(years) {
@@ -68,8 +65,7 @@ fars_read_years <- function(years) {
 #' @importFrom dplyr bind_rows group_by summarize
 #' @importFrom tidyr spread
 #' @examples
-#' fars_summarize_years(c(2013,2014))
-#' fars_summarize_years(c(2015))
+#' \dontrun{fars_summarize_years(c(2013,2014))}
 #'
 #' @export
 fars_summarize_years <- function(years) {
@@ -90,8 +86,7 @@ fars_summarize_years <- function(years) {
 #' @importFrom graphics points
 #' @note if state.num not exist in data, the function will stop.
 #' @examples
-#' fars_map_state(1, 2013)
-#' fars_map_state(12, 2013)
+#' \dontrun{fars_map_state(1, 2013)}
 #'
 #' @export
 fars_map_state <- function(state.num, year) {

@@ -15,7 +15,10 @@ The datafrome coresponding to given \code{years}
 \description{
 Get data for given year(s)
 }
+\note{
+The year could be invalid if file does not exist.
+}
 \examples{
-fars_read_years(c(2013, 2015))
-fars_read_years(c(2015,2018))
+\dontrun{fars_read_years(c(2013, 2015))}
+
 }

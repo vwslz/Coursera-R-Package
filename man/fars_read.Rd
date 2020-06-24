@@ -15,8 +15,10 @@ The data frame from file at \code{filename}
 \description{
 Read data from a file at given path
 }
+\note{
+The function will stop if the file does not exist.
+}
 \examples{
-fars_read("accident_2013.csv.bz2")
-fars_read("accident_2014.csv.bz2")
-fars_read("accident_2015.csv.bz2")
+\dontrun{fars_read("accident_2013.csv.bz2")}
+
 }

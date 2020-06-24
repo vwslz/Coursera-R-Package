@@ -16,6 +16,6 @@ The data frame summarize data from given \code{years}
 Summarize data for given year(s)
 }
 \examples{
-fars_summarize_years(c(2013,2014))
-fars_summarize_years(c(2015))
+\dontrun{fars_summarize_years(c(2013,2014))}
+
 }

@@ -17,7 +17,10 @@ The plot of accidents for given \code{state.num} in \code{year}
 \description{
 Display accidents for a given state in a given year
 }
+\note{
+if state.num not exist in data, the function will stop.
+}
 \examples{
-fars_map_state(1, 2013)
-fars_map_state(12, 2013)
+\dontrun{fars_map_state(1, 2013)}
+
 }

@@ -16,7 +16,6 @@ The string coresponding to \code{year}
 Construct the filename for a given year
 }
 \examples{
-make_filename(2018)
-make_filename(2019)
-make_filename(2020)
+\dontrun{make_filename(2018)}
+
 }
