@@ -9,7 +9,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This package contains dataset for accidents in 2013, 2014, 2015. It provides method to read data for each year and summerized information. It can also visualize the accidents for a state in a specifed year.
+This package contains dataset for accidents in 2013, 2014, 2015. It provides method to:
+- read data for each year and summerized information
+- visualize the accidents for a state in a specifed year
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
