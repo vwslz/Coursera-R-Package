@@ -1,0 +1,25 @@
+---
+title: "Toturial"
+author: "Yimin Zhu"
+date: "2020-06-24"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Toturial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This package contains dataset for accidents in 2013, 2014, 2015. It provides method to read data for each year and summerized information. It can also visualize the accidents for a state in a specifed year.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(dplyr)
+library(tidyr)
+library(testthat)
+```

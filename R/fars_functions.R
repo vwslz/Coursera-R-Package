@@ -3,19 +3,22 @@
 #' @param filename A string
 #' @return The data frame from file at \code{filename}
 #' @importFrom readr read_csv
-#' @importFrom dplyr tbl_df
+#' @importFrom tibble as_tibble
 #' @note The function will stop if the file does not exist.
 #' @examples
 #' fars_read("accident_2013.csv.bz2")
 #' fars_read("accident_2014.csv.bz2")
 #' fars_read("accident_2015.csv.bz2")
+#'
+#' @export
 fars_read <- function(filename) {
+  filename = paste("./inst/extdata/", filename, sep = "")
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
   data <- suppressMessages({
     readr::read_csv(filename, progress = FALSE)
   })
-  dplyr::tbl_df(data)
+  tibble::as_tibble(data)
 }
 
 #' Construct the filename for a given year
@@ -26,6 +29,8 @@ fars_read <- function(filename) {
 #' make_filename(2018)
 #' make_filename(2019)
 #' make_filename(2020)
+#'
+#' @export
 make_filename <- function(year) {
   year <- as.integer(year)
   sprintf("accident_%d.csv.bz2", year)
@@ -40,9 +45,10 @@ make_filename <- function(year) {
 #' @examples
 #' fars_read_years(c(2013, 2015))
 #' fars_read_years(c(2015,2018))
+#'
+#' @export
 fars_read_years <- function(years) {
   lapply(years, function(year) {
-    print(y)
     file <- make_filename(year)
     tryCatch({
       dat <- fars_read(file)
@@ -64,6 +70,8 @@ fars_read_years <- function(years) {
 #' @examples
 #' fars_summarize_years(c(2013,2014))
 #' fars_summarize_years(c(2015))
+#'
+#' @export
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
@@ -84,6 +92,8 @@ fars_summarize_years <- function(years) {
 #' @examples
 #' fars_map_state(1, 2013)
 #' fars_map_state(12, 2013)
+#'
+#' @export
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)
